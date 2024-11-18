@@ -440,8 +440,7 @@ h.	Concaténer 2 chaînes de caractères
     2 ans
 
 112. Quels sont les droits des utilisateurs selon le RGPD ?
-    Droits : Accès - Rectification - Effacement - Limitation du traitement - Portabilité des données -
-            D'opposition - De ne pas faire l'objet d'une décision automatisée (ex: profilage)
+    Droits : Accès - Rectification - Effacement - Limitation du traitement - Portabilité des données - D'opposition - De ne pas faire l'objet d'une décision automatisée (ex: profilage)
 
 113. Qu’est-ce que le principe de minimisation des données selon le RGPD ?
     Les entreprises ne doivent collecter et traiter les données nécessaires et pertinentes pour atteindre
