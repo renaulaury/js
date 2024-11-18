@@ -415,7 +415,7 @@ h.	Concaténer 2 chaînes de caractères
     des données.
 
 106. Quelle est la date d’entrée en vigueur du RGPD ?
-    25/05/2018
+    25/05/2018 à l'initiative de la France
 
 107. Quelles sont les sanctions possibles en cas de non-respect du RGPD ?
     Sanctions administratives : amendes pour violation mineures
