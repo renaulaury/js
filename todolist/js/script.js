@@ -17,6 +17,7 @@ function addTask() {
     });
 
     tasksContainer.appendChild(newTask);
+    updateCount();
 }
 
 //Suppression d'une card
@@ -27,6 +28,14 @@ delBtn.addEventListener('click', function() {
 
 function deleteTask(task) {
     task.remove();
+}
+
+//Fonction compteur
+
+function count() {
+    while(int i > 0) {
+        i++;
+    }
 }
 
 
