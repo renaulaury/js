@@ -1,0 +1,46 @@
+#board {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.box {
+    width:75px;
+    height:75px;
+    border: 1px solid black;
+    background-color: rgb(212, 250, 76);
+    font-size: 3em;
+    text-align: center;
+    line-height: 75px;
+    margin:5px;
+    animation: appear 1s;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.8s, color 0.8s, transform 0.8s;
+}
+
+
+.box-clicked {
+    background-color: #ccc;
+    color:#aaa;
+}
+
+.box-valid {
+    background-color: lightgrey;
+    color: #aaa;
+    transform: scale(0.8);
+}
+
+.box.error{background-color:pink;}
+
+.box.success{background-color:rgb(105, 144, 182);}
+
+.box.notice{background-color:rgb(93, 199, 93);}
+
+@keyframes appear {
+    from {
+        transform: scale(0) rotate(180deg)
+    }
+    to {
+        transform: scale(1) rotate(0deg)
+    } 
+}
