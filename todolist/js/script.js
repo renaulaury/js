@@ -53,7 +53,7 @@ function updateCount(){
     compteur.textContent = taskCard ; //compte le nombre de cartes
 }
 
-
+updateCount()
 
 
 
