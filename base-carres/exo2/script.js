@@ -1,14 +1,21 @@
 const square = document.createElement('div'); //Crée une div
 square.classList.add("carre"); //Ajoute une class a la div
 
+const squareLead = document.createElement('div');
+squareLead.classList.add("squareLead");
 
-function addSquare() {
-   const wrapper = document.getElementById('wrapper'); //Récupere l id du container
 
+function addSquares() {   
    for(let i = 1; i <= 4; i++) {    
     const newSquare = square.cloneNode(); //Clone le carre
-    wrapper.appendChild(newSquare); //Boucls les carrés dans le container
-} 
+    wrapperGroup.appendChild(newSquare); //Boucles les carrés dans le container
+    }    
 }
 
-addSquare();
+const newSquareLead = square.cloneNode();
+wrapper.appendChild(newSquareLead);
+
+
+addSquares();
+
+

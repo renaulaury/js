@@ -1,13 +1,17 @@
-#wrapper {
+#wrapperGroup {
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 10px;
 }
 
-.carre {
-    
+.carre {    
     height: 100px;
     width: 100px;
     background-color: green;
+}
+
+.squareLead {
+    margin-top: 5%;
+    text-align: center;
 }
