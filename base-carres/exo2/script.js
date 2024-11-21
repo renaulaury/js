@@ -11,7 +11,6 @@ function addSquares() {
 
      changeColor(newSquare);
     } 
-          
  }
  
  //Création et mep du carré leader
@@ -20,8 +19,6 @@ function addSquares() {
  wrapper.appendChild(squareLead);
  
  
- addSquares();
-
 function changeColor(newSquare) {
     newSquare.addEventListener('click', function(){
         squareLead.style.backgroundColor = newSquare.style.backgroundColor; //Récup la couleur du carré pour le mettre sur le lead
@@ -40,5 +37,5 @@ function afficherStyles(newSquare) {
     squareLead.innerText = cssCode;
 }
 
- //
+addSquares();
 
