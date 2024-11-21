@@ -10,7 +10,8 @@ function addSquares() {
      newSquare.style.backgroundColor = colors[i];
 
      changeColor(newSquare);
-    }         
+    } 
+          
  }
  
  //Création et mep du carré leader
@@ -23,11 +24,21 @@ function addSquares() {
 
 function changeColor(newSquare) {
     newSquare.addEventListener('click', function(){
-        squareLead.style.backgroundColor = newSquare.style.backgroundColor;
+        squareLead.style.backgroundColor = newSquare.style.backgroundColor; //Récup la couleur du carré pour le mettre sur le lead
+        afficherStyles(newSquare)  
      })
 }
 
- //Quand je clique sur un carré alors le leader prend sa couleur
- //j ai besoin addeventlist sur chaque carre
+function afficherStyles(newSquare) {
+    const styles = window.getComputedStyle(newSquare);
+
+    const cssCode = `
+        background-color: ${styles.backgroundColor};
+        `;   
+        
+    // alert(cssCode);
+    squareLead.innerText = cssCode;
+}
+
  //
 
