@@ -12,32 +12,33 @@ function addSquares() {
         
         wrapperGroup.appendChild(newSquare);
         newSquare.appendChild(newCompteur); //Attention a bien ajouter au clone
-        newCompteur.innerText = count++;
+        newCompteur.innerText = count++;        
 
         mouvementAuclic(newSquare); //A l'intérieur pour que la fonction soit prise en compte pour chaque carré !!
-        // normal(newSquare);
-    }
+        
+        // mouvementNormal(newSquare);
+    }    
     }
 
 function mouvementAuclic(newSquare) { /*pour la portée de la variable, la passer en argument*/
         newSquare.addEventListener("click", function(){
-        newSquare.classList.toggle('active', true);
-        newSquare.style.backgroundColor = "red";
-        newSquare.style.transform = "scale(0.9) rotate(360deg)";
-        newSquare.style.transition = "transform 0.5s ease, background-color 0.5s ease"; //Mvt du transform
+
+        if(!newSquare.classList.contains('active')){ //Action au premier clic
+            newSquare.style.backgroundColor = "red";
+            newSquare.style.transform = "scale(0.9) rotate(360deg)";       
+            newSquare.style.transition = "transform 0.5s ease, background-color 0.5s ease";
+            newSquare.classList.add('active');
+        } else { //Action au 2e clic
+            newSquare.classList.remove('active');
+            newSquare.style.backgroundColor = ""; 
+            // newSquare.style.transform = ""; 
+        }
     });   
 }
 
-function normal(newSquare) {
-    newSquare.addEventListener("click", function(){
-    if (newSquare.style.backgroundColor === "red") {
-        newSquare.style.backgroundColor = "";
-        newSquare.style.transform = "";
-    }
-    
-})}
 
 addSquares();
+
 
 
 
@@ -53,3 +54,4 @@ puis lui dire ou le mettre*/
 /*je dois créer un compteur et qu'il s'affiche*/
 /*faut que je crée une div pour compteur que je met dans la boucle*/
 /*fonction pour ecouter clic > retrecissement + rotation + fond*/
+/*fonction pour mettre l'annulation du css au clic*/
