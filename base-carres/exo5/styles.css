@@ -1,0 +1,6 @@
+p {
+    padding: 2%;
+    border: 2px solid black;
+    border-radius: 10px;
+    background-color: lightgray;
+}
