@@ -40,8 +40,9 @@ function afficherHeader() {
     nav.classList.add('navbar');
     header.appendChild(nav);
 
-    const accueil = document.createElement('p');
-    accueil.classList.add('accueil');
+    const accueil = document.createElement('a');
+    accueil.classList.add('accueil');    
+    accueil.href = "index.html";
     nav.appendChild(accueil);
 
     const textAcc = "Accueil";
@@ -58,29 +59,63 @@ function afficherHeader() {
 
 let listeFavoris = [];
 
-
 function ajoutFavoris(coeur, citation) {
     coeur.addEventListener('click', function() {
         if (coeur.style.color !== 'red') {
             coeur.style.color = 'red';            
             listeFavoris.push(citation); //ajout au tableauFav
-            for (let i = 0; i < listeFavoris.length; i++) {
-                console.log(listeFavoris[i].content); 
-            }
+            // for (let i = 0; i < listeFavoris.length; i++) {
+            //     console.log(listeFavoris[i].content); 
+            // }
         } else {
             coeur.style.color = '';
             //Filter crée un nouveau tableau (fav = citation) : supprime dans le tableau la citation, les 2 éléments sont comparés pour pouvoir etre supprimé ou non
             listeFavoris = listeFavoris.filter(fav => fav.content !== citation.content);//suppression du tablFav
-            for (let i = 0; i < listeFavoris.length; i++) {
-                console.log(listeFavoris[i].content); 
-            }
+            // for (let i = 0; i < listeFavoris.length; i++) {
+            //     console.log(listeFavoris[i].content); 
+            // }
         }
+            sauvegarderFavoris()
     });
 }
+
+function sauvegarderFavoris() {
+    localStorage.setItem('favoris', JSON.stringify(listeFavoris));  // Sauvegarde favoris dans le localStorage - Stringify permet de convertir mon tableau en format json
+}
+
+const recupQuotesFav = document.getElementById('quotesFav');
+let listeFav = [];
+if (recupQuotesFav) {
+    listeFav = JSON.parse(recupQuotesFav); // Convertir le JSON en tableau d'objets
+}
+
+function afficherFavoris() {  
+    for(let q = 0; q < listeFavoris.length; q++) {
+        const blockCitationFav = document.createElement('div'); //je crée une dic pour y mettre 1 citation et 1 coeur
+        blockCitationFav.classList.add('blockCitationFav');
+        containerQuotesFav.appendChild(blockCitationFav);
+
+        const citationFav = document.createElement('p'); //je crée un 1er p pour y mettre 1 citation
+        citationFav.classList.add('citationFav');
+        blockCitationFav.appendChild(citationFav);
+        
+        const citationsFav = `${listeFavoris[q].content}" - "${listeFavoris[q].author}`;
+        citationFav.insertAdjacentHTML('beforeend', citationsFav);
+        
+        const coeur = document.createElement('p'); //je crée un 2e p pour y mettre mon coeur
+        coeur.classList.add('coeur');    
+        blockCitationFav.appendChild(coeur);
+
+        const coeurI = document.createElement('i'); //pas possible d'inserer avec inserAdjacent car insert = string
+        coeurI.classList.add('fa-solid', 'fa-heart');
+        coeurI.style.color = 'red';
+        coeur.appendChild(coeurI);     
+}}
 
 function index() {   
     afficherHeader(); 
     afficherQuotes();    
+    afficherFavoris()
 }
 
 index();
@@ -96,11 +131,9 @@ index();
 /*ca met en rouge > creation d'un élément i et lui dire quand je clic ca devient rouge et vice versa*/
 
 /*puis ajouter a une liste*/
-/*créer un new array, array qui ressemble au jJSON ajouter et supprimer lors du clic au coeur*/
-
-
+/*créer un new array, array qui ressemble au JSON ajouter et supprimer lors du clic au coeur*/
 /*sauvegarder dans le localstorage*/
 /*quand je clic sur mes favoris ca affiche la liste*/
-/*surement créer nouvelles balise dans favoris.html*/
+/*surement créer nouvelles balises dans favoris.html*/
 
 
