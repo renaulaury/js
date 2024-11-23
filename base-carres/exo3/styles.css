@@ -1,0 +1,22 @@
+#wrapperGroup {
+    display: grid;
+    grid-template-columns: 200px 200px;
+    grid-template-rows: 200px 200px;
+    gap:10px;
+    align-items: center;
+    justify-content: center;
+}
+
+.carre {
+    width: auto;
+    height: 100%;
+    background-color: rgb(138, 201, 138);
+}
+
+.compteur {
+    height: 100%;
+    display: flex;
+    place-items: center;
+    justify-content: center;
+    color: white;
+}

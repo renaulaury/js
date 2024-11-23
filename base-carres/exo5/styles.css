@@ -1,0 +1,29 @@
+* {
+    margin: 0;
+    padding:0;
+}
+
+.blockCitation {
+    padding: 2%;
+    border: 2px solid black;
+    border-radius: 10px;
+    background-color: lightgray;
+    display: flex;  
+    text-align: justify;
+    margin: 2%;
+}
+
+.citation {    
+    width: 90%;
+}
+
+.coeur {
+    padding:5%;
+}
+
+.navbar {
+    padding-top: 2%;
+    display: flex;
+    justify-content: space-around;
+}
+
