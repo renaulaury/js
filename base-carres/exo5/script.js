@@ -29,7 +29,7 @@ function afficherQuotes() {
         coeurI.classList.add('fa-solid', 'fa-heart')
         coeur.appendChild(coeurI);     
 
-        ajoutFavoris(coeurI);
+        ajoutFavoris(coeurI, tableauQuotes[q]);
     }
 }
 
@@ -47,22 +47,33 @@ function afficherHeader() {
     const textAcc = "Accueil";
     accueil.insertAdjacentHTML('beforeend', textAcc);    
 
-    const favoris = document.createElement('p');
+    const favoris = document.createElement('a');
     favoris.classList.add('favoris');
+    favoris.href = "favoris.html";
     nav.appendChild(favoris);
 
     const textFav = "Mes favoris";
     favoris.insertAdjacentHTML('beforeend', textFav);    
-
-
 }
 
-function ajoutFavoris(coeur) {
+let listeFavoris = [];
+
+
+function ajoutFavoris(coeur, citation) {
     coeur.addEventListener('click', function() {
         if (coeur.style.color !== 'red') {
-            coeur.style.color = 'red';
+            coeur.style.color = 'red';            
+            listeFavoris.push(citation); //ajout au tableauFav
+            for (let i = 0; i < listeFavoris.length; i++) {
+                console.log(listeFavoris[i].content); 
+            }
         } else {
             coeur.style.color = '';
+            //Filter crée un nouveau tableau (fav = citation) : supprime dans le tableau la citation, les 2 éléments sont comparés pour pouvoir etre supprimé ou non
+            listeFavoris = listeFavoris.filter(fav => fav.content !== citation.content);//suppression du tablFav
+            for (let i = 0; i < listeFavoris.length; i++) {
+                console.log(listeFavoris[i].content); 
+            }
         }
     });
 }
@@ -84,9 +95,12 @@ index();
 //quand je clic sur le coeur :
 /*ca met en rouge > creation d'un élément i et lui dire quand je clic ca devient rouge et vice versa*/
 
-/*puis ca ajouter a une liste*/
-/*créer un new array, ajouter et supprimer lors du clic au coeur*/
+/*puis ajouter a une liste*/
+/*créer un new array, array qui ressemble au jJSON ajouter et supprimer lors du clic au coeur*/
+
+
 /*sauvegarder dans le localstorage*/
 /*quand je clic sur mes favoris ca affiche la liste*/
+/*surement créer nouvelles balise dans favoris.html*/
 
 
