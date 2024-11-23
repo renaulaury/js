@@ -7,6 +7,10 @@ const recupQuotes = localStorage.getItem('quotes'); // Récupérer les citations
 const tableauQuotes = JSON.parse(recupQuotes); //Convertir JSON en tableau
 const containerQuotes = document.getElementById('quotes');
 
+let listeFavoris = JSON.parse(localStorage.getItem('favoris'));//Récup la save des favoris
+console.log(listeFavoris);
+const containerQuotesFav = document.getElementById('quotesFav');
+
 
 function afficherQuotes() {
     for(let q = 0; q < tableauQuotes.length; q++) {
@@ -33,7 +37,7 @@ function afficherQuotes() {
     }
 }
 
-function afficherHeader() {
+export function afficherHeader() {
     const header = document.querySelector('header');
 
     const nav = document.createElement('nav');
@@ -56,8 +60,6 @@ function afficherHeader() {
     const textFav = "Mes favoris";
     favoris.insertAdjacentHTML('beforeend', textFav);    
 }
-
-let listeFavoris = [];
 
 function ajoutFavoris(coeur, citation) {
     coeur.addEventListener('click', function() {
@@ -83,13 +85,7 @@ function sauvegarderFavoris() {
     localStorage.setItem('favoris', JSON.stringify(listeFavoris));  // Sauvegarde favoris dans le localStorage - Stringify permet de convertir mon tableau en format json
 }
 
-const recupQuotesFav = document.getElementById('quotesFav');
-let listeFav = [];
-if (recupQuotesFav) {
-    listeFav = JSON.parse(recupQuotesFav); // Convertir le JSON en tableau d'objets
-}
-
-function afficherFavoris() {  
+export function afficherFavoris() {  
     for(let q = 0; q < listeFavoris.length; q++) {
         const blockCitationFav = document.createElement('div'); //je crée une dic pour y mettre 1 citation et 1 coeur
         blockCitationFav.classList.add('blockCitationFav');
@@ -114,8 +110,7 @@ function afficherFavoris() {
 
 function index() {   
     afficherHeader(); 
-    afficherQuotes();    
-    afficherFavoris()
+    afficherQuotes();   //Affiche les quotes et enregistre les favoris
 }
 
 index();
