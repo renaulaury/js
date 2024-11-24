@@ -4,12 +4,14 @@ import { quotes } from "./quotes4.js";
 //Pour récupérer localStorage.getItem('nom')
 
 const recupQuotes = localStorage.getItem('quotes'); // Récupérer les citations depuis le localStorage
+// console.log('Récupération des quotes:', recupQuotes);
 const tableauQuotes = JSON.parse(recupQuotes); //Convertir JSON en tableau
+// console.log(tableauQuotes);
 const containerQuotes = document.getElementById('quotes');
 
-let listeFavoris = JSON.parse(localStorage.getItem('favoris'));//Récup la save des favoris
-console.log(listeFavoris);
-const containerQuotesFav = document.getElementById('quotesFav');
+// let listeFavoris = JSON.parse(localStorage.getItem('favoris'));//Récup la save des favoris
+// console.log(listeFavoris);
+// const containerQuotesFav = document.getElementById('quotesFav');
 
 
 function afficherQuotes() {
@@ -129,6 +131,7 @@ index();
 /*créer un new array, array qui ressemble au JSON ajouter et supprimer lors du clic au coeur*/
 /*sauvegarder dans le localstorage*/
 /*quand je clic sur mes favoris ca affiche la liste*/
-/*surement créer nouvelles balises dans favoris.html*/
+/*créer nouvelles balises dans favoris.html*/
+/*Afficher le tableau dans la page des favoris : mais comment ?*/
 
 
