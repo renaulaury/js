@@ -4,7 +4,7 @@ import { quotes } from "./quotes4.js";
 //Pour récupérer localStorage.getItem('nom')
 
 const recupQuotes = localStorage.getItem('quotes'); // Récupérer les citations depuis le localStorage
-// console.log('Récupération des quotes:', recupQuotes);
+// console.log(localStorage.getItem('quotes'));
 const tableauQuotes = JSON.parse(recupQuotes); //Convertir JSON en tableau
 // console.log(tableauQuotes);
 const containerQuotes = document.getElementById('quotes');
@@ -35,87 +35,90 @@ function afficherQuotes() {
         coeurI.classList.add('fa-solid', 'fa-heart')
         coeur.appendChild(coeurI);     
 
-        ajoutFavoris(coeurI, tableauQuotes[q]);
+        // ajoutFavoris(coeurI, tableauQuotes[q]);
     }
 }
 
-export function afficherHeader() {
-    const header = document.querySelector('header');
+// export function afficherHeader() {
+//     const header = document.querySelector('header');
 
-    const nav = document.createElement('nav');
-    nav.classList.add('navbar');
-    header.appendChild(nav);
+//     const nav = document.createElement('nav');
+//     nav.classList.add('navbar');
+//     header.appendChild(nav);
 
-    const accueil = document.createElement('a');
-    accueil.classList.add('accueil');    
-    accueil.href = "index.html";
-    nav.appendChild(accueil);
+//     const accueil = document.createElement('a');
+//     accueil.classList.add('accueil');    
+//     accueil.href = "index.html";
+//     nav.appendChild(accueil);
 
-    const textAcc = "Accueil";
-    accueil.insertAdjacentHTML('beforeend', textAcc);    
+//     const textAcc = "Accueil";
+//     accueil.insertAdjacentHTML('beforeend', textAcc);    
 
-    const favoris = document.createElement('a');
-    favoris.classList.add('favoris');
-    favoris.href = "favoris.html";
-    nav.appendChild(favoris);
+//     const favoris = document.createElement('a');
+//     favoris.classList.add('favoris');
+//     favoris.href = "favoris.html";
+//     nav.appendChild(favoris);
 
-    const textFav = "Mes favoris";
-    favoris.insertAdjacentHTML('beforeend', textFav);    
-}
+//     const textFav = "Mes favoris";
+//     favoris.insertAdjacentHTML('beforeend', textFav);    
+// }
 
-function ajoutFavoris(coeur, citation) {
-    coeur.addEventListener('click', function() {
-        if (coeur.style.color !== 'red') {
-            coeur.style.color = 'red';            
-            listeFavoris.push(citation); //ajout au tableauFav
-            // for (let i = 0; i < listeFavoris.length; i++) {
-            //     console.log(listeFavoris[i].content); 
-            // }
-        } else {
-            coeur.style.color = '';
-            //Filter crée un nouveau tableau (fav = citation) : supprime dans le tableau la citation, les 2 éléments sont comparés pour pouvoir etre supprimé ou non
-            listeFavoris = listeFavoris.filter(fav => fav.content !== citation.content);//suppression du tablFav
-            // for (let i = 0; i < listeFavoris.length; i++) {
-            //     console.log(listeFavoris[i].content); 
-            // }
-        }
-            sauvegarderFavoris()
-    });
-}
+// function ajoutFavoris(coeur, citation) {
+//     coeur.addEventListener('click', function() {
+//         if (coeur.style.color !== 'red') {
+//             coeur.style.color = 'red';            
+//             listeFavoris.push(citation); //ajout au tableauFav
+//             // for (let i = 0; i < listeFavoris.length; i++) {
+//             //     console.log(listeFavoris[i].content); 
+//             // }
+//         } else {
+//             coeur.style.color = '';
+//             //Filter crée un nouveau tableau (fav = citation) : supprime dans le tableau la citation, les 2 éléments sont comparés pour pouvoir etre supprimé ou non
+//             listeFavoris = listeFavoris.filter(fav => fav.content !== citation.content);//suppression du tablFav
+//             // for (let i = 0; i < listeFavoris.length; i++) {
+//             //     console.log(listeFavoris[i].content); 
+//             // }
+//         }
+//             // sauvegarderFavoris()
+//     });
+// }
 
-function sauvegarderFavoris() {
-    localStorage.setItem('favoris', JSON.stringify(listeFavoris));  // Sauvegarde favoris dans le localStorage - Stringify permet de convertir mon tableau en format json
-}
+// function sauvegarderFavoris() {
+//     localStorage.setItem('favoris', JSON.stringify(listeFavoris));  // Sauvegarde favoris dans le localStorage - Stringify permet de convertir mon tableau en format json
+// }
 
-export function afficherFavoris() {  
-    for(let q = 0; q < listeFavoris.length; q++) {
-        const blockCitationFav = document.createElement('div'); //je crée une dic pour y mettre 1 citation et 1 coeur
-        blockCitationFav.classList.add('blockCitationFav');
-        containerQuotesFav.appendChild(blockCitationFav);
+// const containerQuotesFav = document.getElementById('quotesFav');
 
-        const citationFav = document.createElement('p'); //je crée un 1er p pour y mettre 1 citation
-        citationFav.classList.add('citationFav');
-        blockCitationFav.appendChild(citationFav);
+// export function afficherFavoris() {  
+//     for(let q = 0; q < listeFavoris.length; q++) {
+//         const blockCitationFav = document.createElement('div'); //je crée une dic pour y mettre 1 citation et 1 coeur
+//         blockCitationFav.classList.add('blockCitationFav');
+//         containerQuotesFav.appendChild(blockCitationFav);
+
+//         const citationFav = document.createElement('p'); //je crée un 1er p pour y mettre 1 citation
+//         citationFav.classList.add('citationFav');
+//         blockCitationFav.appendChild(citationFav);
         
-        const citationsFav = `${listeFavoris[q].content}" - "${listeFavoris[q].author}`;
-        citationFav.insertAdjacentHTML('beforeend', citationsFav);
+//         const citationsFav = `${listeFavoris[q].content}" - "${listeFavoris[q].author}`;
+//         citationFav.insertAdjacentHTML('beforeend', citationsFav);
         
-        const coeur = document.createElement('p'); //je crée un 2e p pour y mettre mon coeur
-        coeur.classList.add('coeur');    
-        blockCitationFav.appendChild(coeur);
+//         const coeur = document.createElement('p'); //je crée un 2e p pour y mettre mon coeur
+//         coeur.classList.add('coeur');    
+//         blockCitationFav.appendChild(coeur);
 
-        const coeurI = document.createElement('i'); //pas possible d'inserer avec inserAdjacent car insert = string
-        coeurI.classList.add('fa-solid', 'fa-heart');
-        coeurI.style.color = 'red';
-        coeur.appendChild(coeurI);     
-}}
+//         const coeurI = document.createElement('i'); //pas possible d'inserer avec inserAdjacent car insert = string
+//         coeurI.classList.add('fa-solid', 'fa-heart');
+//         coeurI.style.color = 'red';
+//         coeur.appendChild(coeurI);     
+// }}
 
-function index() {   
-    afficherHeader(); 
-    afficherQuotes();   //Affiche les quotes et enregistre les favoris
-}
+// function index() {   
+//     afficherHeader(); 
+//     afficherQuotes();   //Affiche les quotes et enregistre les favoris
+// }
 
-index();
+// index();
+afficherQuotes()
 
 
 /*je dois d'abord récup les quotes du json*/
@@ -132,6 +135,8 @@ index();
 /*sauvegarder dans le localstorage*/
 /*quand je clic sur mes favoris ca affiche la liste*/
 /*créer nouvelles balises dans favoris.html*/
+
+
 /*Afficher le tableau dans la page des favoris : mais comment ?*/
 
 

@@ -1,4 +1,4 @@
-export let quotes = [
+export const quotes = [
     {
         "id": 1,
         "author": "Rocky Balboa",
