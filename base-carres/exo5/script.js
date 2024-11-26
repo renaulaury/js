@@ -3,16 +3,11 @@ import { quotes } from "./quotes4.js";
 //Pour stocker on utilise localStorage.setItem('key', 'value')
 //Pour récupérer localStorage.getItem('nom')
 
-const recupQuotes = localStorage.getItem('quotes'); // Récupérer les citations depuis le localStorage
-// console.log(localStorage.getItem('quotes'));
-const tableauQuotes = JSON.parse(recupQuotes); //Convertir JSON en tableau
-// console.log(tableauQuotes);
+const tableauQuotes = quotes; //Pas besoin de convertir avec parse car c'est déjà un tableau
 const containerQuotes = document.getElementById('quotes');
 
-// let listeFavoris = JSON.parse(localStorage.getItem('favoris'));//Récup la save des favoris
-// console.log(listeFavoris);
-// const containerQuotesFav = document.getElementById('quotesFav');
 
+// let listeFavoris = JSON.parse(localStorage.getItem('favoris')) || [];
 
 function afficherQuotes() {
     for(let q = 0; q < tableauQuotes.length; q++) {
@@ -33,13 +28,18 @@ function afficherQuotes() {
 
         const coeurI = document.createElement('i'); //pas possible d'inserer avec inserAdjacent car insert = string
         coeurI.classList.add('fa-solid', 'fa-heart')
-        coeur.appendChild(coeurI);     
+        coeur.appendChild(coeurI); 
 
-        // ajoutFavoris(coeurI, tableauQuotes[q]);
+        // if (isFavorite(tableauQuotes[q])) {
+        //     coeurI.style.color = 'red'; // Colorie le cœur en rouge si c'est un favori
+        // }
+        
+        ajoutFavoris(coeurI, tableauQuotes[q]);
     }
 }
 
-// export function afficherHeader() {
+
+// function afficherHeader() {
 //     const header = document.querySelector('header');
 
 //     const nav = document.createElement('nav');
@@ -63,33 +63,40 @@ function afficherQuotes() {
 //     favoris.insertAdjacentHTML('beforeend', textFav);    
 // }
 
-// function ajoutFavoris(coeur, citation) {
-//     coeur.addEventListener('click', function() {
-//         if (coeur.style.color !== 'red') {
-//             coeur.style.color = 'red';            
-//             listeFavoris.push(citation); //ajout au tableauFav
-//             // for (let i = 0; i < listeFavoris.length; i++) {
-//             //     console.log(listeFavoris[i].content); 
-//             // }
-//         } else {
-//             coeur.style.color = '';
-//             //Filter crée un nouveau tableau (fav = citation) : supprime dans le tableau la citation, les 2 éléments sont comparés pour pouvoir etre supprimé ou non
-//             listeFavoris = listeFavoris.filter(fav => fav.content !== citation.content);//suppression du tablFav
-//             // for (let i = 0; i < listeFavoris.length; i++) {
-//             //     console.log(listeFavoris[i].content); 
-//             // }
-//         }
-//             // sauvegarderFavoris()
-//     });
+
+function ajoutFavoris(coeur, citation) {    
+
+    coeur.addEventListener('click', function() {
+        if (coeur.style.color !== 'red') {
+            coeur.style.color = 'red';            
+            listeFavoris.push(citation); //ajout au tableauFav
+            // for (let i = 0; i < listeFavoris.length; i++) {
+            //     console.log(listeFavoris[i].content); 
+            // }
+        } else {
+            coeur.style.color = '';
+            //Filter crée un nouveau tableau (fav = citation) : supprime dans le tableau la citation, les 2 éléments sont comparés pour pouvoir etre supprimé ou non
+            listeFavoris = listeFavoris.filter(fav => fav.content !== citation.content);//suppression du tablFav
+            // for (let i = 0; i < listeFavoris.length; i++) {
+            //     console.log(listeFavoris[i].content); 
+            // }
+        }
+            sauvegarderFavoris()
+    });
+}
+
+// function isFavorite(citation) {
+//     return listeFavoris.some(fav => fav.content === citation.content);
 // }
 
-// function sauvegarderFavoris() {
-//     localStorage.setItem('favoris', JSON.stringify(listeFavoris));  // Sauvegarde favoris dans le localStorage - Stringify permet de convertir mon tableau en format json
-// }
+function sauvegarderFavoris() {
+    localStorage.setItem('favoris', JSON.stringify(listeFavoris));  // Sauvegarde favoris dans le localStorage - Stringify permet de convertir mon tableau en format json
+}
 
-// const containerQuotesFav = document.getElementById('quotesFav');
 
-// export function afficherFavoris() {  
+// function afficherFavoris() {      
+//     const containerQuotesFav = document.getElementById('quotesFav');
+
 //     for(let q = 0; q < listeFavoris.length; q++) {
 //         const blockCitationFav = document.createElement('div'); //je crée une dic pour y mettre 1 citation et 1 coeur
 //         blockCitationFav.classList.add('blockCitationFav');
@@ -112,13 +119,12 @@ function afficherQuotes() {
 //         coeur.appendChild(coeurI);     
 // }}
 
-// function index() {   
-//     afficherHeader(); 
-//     afficherQuotes();   //Affiche les quotes et enregistre les favoris
-// }
+function index() {   
+    // afficherHeader(); 
+    afficherQuotes();   //Affiche les quotes et enregistre les favoris
+}
 
-// index();
-afficherQuotes()
+index();
 
 
 /*je dois d'abord récup les quotes du json*/
